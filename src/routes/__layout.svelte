@@ -42,4 +42,9 @@
 			padding: 40px 0;
 		}
 	}
+
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
 </style>

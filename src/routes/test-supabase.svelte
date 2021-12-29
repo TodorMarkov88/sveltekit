@@ -35,7 +35,7 @@ export async function load() {
 {:then data}
 <ul>
   {#each data as properties}
-    <li>{properties.name}</li>
+    <li class='bg-red-500'>{properties.name}</li>
   {/each}
   </ul>
 {:catch error}
