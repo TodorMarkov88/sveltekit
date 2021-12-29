@@ -1,17 +1,21 @@
-<script>
+<script context="module">
 	import supabase from '$lib/db' 
 
 
-async function getData() {
+export async function load() {
   const { data, error } = await supabase
     .from('properties')
     .select()
   if (error) throw new Error(error.message)
   
-  return data
+  return {props:{data}}
 }
 </script>
 
+
+<script>
+   export let data;
+</script>
 <svelte:head>
 	<title>TEST</title>
 </svelte:head>
@@ -24,14 +28,16 @@ async function getData() {
  
 
 <section>
-
+ 
 <h1>My favorite games</h1>
-{#await getData()}
+{#await data}
   <p>Fetching data...</p>
 {:then data}
+<ul>
   {#each data as properties}
     <li>{properties.name}</li>
   {/each}
+  </ul>
 {:catch error}
   <p>Something went wrong while fetching the data:</p>
   <pre>{error}</pre>

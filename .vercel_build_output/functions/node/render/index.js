@@ -6909,16 +6909,16 @@ var init_uid_json_095450d2 = __esm({
   }
 });
 
-// .svelte-kit/output/server/chunks/__layout-36c746fd.js
-var layout_36c746fd_exports = {};
-__export(layout_36c746fd_exports, {
+// .svelte-kit/output/server/chunks/__layout-821dac8f.js
+var layout_821dac8f_exports = {};
+__export(layout_821dac8f_exports, {
   default: () => _layout
 });
 var import_cookie, getStores, page, logo, css$1, Header, css, _layout;
-var init_layout_36c746fd = __esm({
-  ".svelte-kit/output/server/chunks/__layout-36c746fd.js"() {
+var init_layout_821dac8f = __esm({
+  ".svelte-kit/output/server/chunks/__layout-821dac8f.js"() {
     init_shims();
-    init_app_56849ea8();
+    init_app_19e2c4d8();
     init_ssr();
     import_cookie = __toModule(require_cookie());
     init_dist();
@@ -6984,9 +6984,9 @@ var init_layout_36c746fd = __esm({
   }
 });
 
-// .svelte-kit/output/server/chunks/error-c522262a.js
-var error_c522262a_exports = {};
-__export(error_c522262a_exports, {
+// .svelte-kit/output/server/chunks/error-a08e7017.js
+var error_a08e7017_exports = {};
+__export(error_a08e7017_exports, {
   default: () => Error2,
   load: () => load
 });
@@ -6994,10 +6994,10 @@ function load({ error: error2, status }) {
   return { props: { error: error2, status } };
 }
 var import_cookie2, Error2;
-var init_error_c522262a = __esm({
-  ".svelte-kit/output/server/chunks/error-c522262a.js"() {
+var init_error_a08e7017 = __esm({
+  ".svelte-kit/output/server/chunks/error-a08e7017.js"() {
     init_shims();
-    init_app_56849ea8();
+    init_app_19e2c4d8();
     init_ssr();
     import_cookie2 = __toModule(require_cookie());
     init_dist();
@@ -7020,9 +7020,9 @@ ${error2.stack ? `<pre>${escape2(error2.stack)}</pre>` : ``}`;
   }
 });
 
-// .svelte-kit/output/server/chunks/index-76ab6354.js
-var index_76ab6354_exports = {};
-__export(index_76ab6354_exports, {
+// .svelte-kit/output/server/chunks/index-b491ed2e.js
+var index_b491ed2e_exports = {};
+__export(index_b491ed2e_exports, {
   default: () => Routes,
   prerender: () => prerender
 });
@@ -7168,10 +7168,10 @@ function modulo(n, m2) {
   return (n % m2 + m2) % m2;
 }
 var import_cookie3, subscriber_queue2, css$12, Counter, css2, prerender, Routes;
-var init_index_76ab6354 = __esm({
-  ".svelte-kit/output/server/chunks/index-76ab6354.js"() {
+var init_index_b491ed2e = __esm({
+  ".svelte-kit/output/server/chunks/index-b491ed2e.js"() {
     init_shims();
-    init_app_56849ea8();
+    init_app_19e2c4d8();
     init_ssr();
     import_cookie3 = __toModule(require_cookie());
     init_dist();
@@ -10912,7 +10912,7 @@ var require_browser = __commonJS({
     exports.log = log;
     exports.formatArgs = formatArgs;
     exports.save = save;
-    exports.load = load3;
+    exports.load = load4;
     exports.useColors = useColors;
     exports.storage = typeof chrome != "undefined" && typeof chrome.storage != "undefined" ? chrome.storage.local : localstorage();
     exports.colors = [
@@ -10968,7 +10968,7 @@ var require_browser = __commonJS({
       } catch (e2) {
       }
     }
-    function load3() {
+    function load4() {
       var r2;
       try {
         r2 = exports.storage.debug;
@@ -10979,7 +10979,7 @@ var require_browser = __commonJS({
       }
       return r2;
     }
-    exports.enable(load3());
+    exports.enable(load4());
     function localstorage() {
       try {
         return window.localStorage;
@@ -11000,7 +11000,7 @@ var require_node = __commonJS({
     exports.log = log;
     exports.formatArgs = formatArgs;
     exports.save = save;
-    exports.load = load3;
+    exports.load = load4;
     exports.useColors = useColors;
     exports.colors = [6, 2, 3, 4, 5, 1];
     exports.inspectOpts = Object.keys(process.env).filter(function(key) {
@@ -11062,7 +11062,7 @@ var require_node = __commonJS({
         process.env.DEBUG = namespaces;
       }
     }
-    function load3() {
+    function load4() {
       return process.env.DEBUG;
     }
     function createWritableStdioStream(fd2) {
@@ -11110,7 +11110,7 @@ var require_node = __commonJS({
         debug.inspectOpts[keys[i2]] = exports.inspectOpts[keys[i2]];
       }
     }
-    exports.enable(load3());
+    exports.enable(load4());
   }
 });
 
@@ -11208,11 +11208,11 @@ var require_node_gyp_build = __commonJS({
     var libc = process.env.LIBC || (isAlpine(platform) ? "musl" : "glibc");
     var armv = process.env.ARM_VERSION || (arch === "arm64" ? "8" : vars.arm_version) || "";
     var uv = (process.versions.uv || "").split(".")[0];
-    module2.exports = load3;
-    function load3(dir) {
-      return runtimeRequire(load3.path(dir));
+    module2.exports = load4;
+    function load4(dir) {
+      return runtimeRequire(load4.path(dir));
     }
-    load3.path = function(dir) {
+    load4.path = function(dir) {
       dir = path.resolve(dir || ".");
       try {
         var name = runtimeRequire(path.join(dir, "package.json")).name.toUpperCase().replace(/-/g, "_");
@@ -11370,12 +11370,12 @@ var require_node_gyp_build = __commonJS({
     function isAlpine(platform2) {
       return platform2 === "linux" && fs.existsSync("/etc/alpine-release");
     }
-    load3.parseTags = parseTags;
-    load3.matchTags = matchTags;
-    load3.compareTags = compareTags;
-    load3.parseTuple = parseTuple;
-    load3.matchTuple = matchTuple;
-    load3.compareTuples = compareTuples;
+    load4.parseTags = parseTags;
+    load4.matchTags = matchTags;
+    load4.compareTags = compareTags;
+    load4.parseTuple = parseTuple;
+    load4.matchTuple = matchTuple;
+    load4.compareTuples = compareTuples;
   }
 });
 
@@ -14987,19 +14987,19 @@ var require_SupabaseClient = __commonJS({
       headers: constants_1.DEFAULT_HEADERS
     };
     var SupabaseClient = class {
-      constructor(supabaseUrl, supabaseKey, options2) {
-        this.supabaseUrl = supabaseUrl;
-        this.supabaseKey = supabaseKey;
-        if (!supabaseUrl)
+      constructor(supabaseUrl2, supabaseKey2, options2) {
+        this.supabaseUrl = supabaseUrl2;
+        this.supabaseKey = supabaseKey2;
+        if (!supabaseUrl2)
           throw new Error("supabaseUrl is required.");
-        if (!supabaseKey)
+        if (!supabaseKey2)
           throw new Error("supabaseKey is required.");
-        supabaseUrl = (0, helpers_1.stripTrailingSlash)(supabaseUrl);
+        supabaseUrl2 = (0, helpers_1.stripTrailingSlash)(supabaseUrl2);
         const settings = Object.assign(Object.assign({}, DEFAULT_OPTIONS), options2);
-        this.restUrl = `${supabaseUrl}/rest/v1`;
-        this.realtimeUrl = `${supabaseUrl}/realtime/v1`.replace("http", "ws");
-        this.authUrl = `${supabaseUrl}/auth/v1`;
-        this.storageUrl = `${supabaseUrl}/storage/v1`;
+        this.restUrl = `${supabaseUrl2}/rest/v1`;
+        this.realtimeUrl = `${supabaseUrl2}/realtime/v1`.replace("http", "ws");
+        this.authUrl = `${supabaseUrl2}/auth/v1`;
+        this.storageUrl = `${supabaseUrl2}/storage/v1`;
         this.schema = settings.schema;
         this.multiTab = settings.multiTab;
         this.fetch = settings.fetch;
@@ -15181,37 +15181,41 @@ var require_main5 = __commonJS({
     exports.SupabaseClient = SupabaseClient_1.default;
     __exportStar(require_main(), exports);
     __exportStar(require_main3(), exports);
-    var createClient2 = (supabaseUrl, supabaseKey, options2) => {
-      return new SupabaseClient_1.default(supabaseUrl, supabaseKey, options2);
+    var createClient2 = (supabaseUrl2, supabaseKey2, options2) => {
+      return new SupabaseClient_1.default(supabaseUrl2, supabaseKey2, options2);
     };
     exports.createClient = createClient2;
   }
 });
 
-// .svelte-kit/output/server/chunks/test-supabase-b383c63a.js
-var test_supabase_b383c63a_exports = {};
-__export(test_supabase_b383c63a_exports, {
-  default: () => Test_supabase
+// .svelte-kit/output/server/chunks/test-supabase-2543d1ad.js
+var test_supabase_2543d1ad_exports = {};
+__export(test_supabase_2543d1ad_exports, {
+  default: () => Test_supabase,
+  load: () => load2
 });
-var import_supabase_js, import_cookie4, supabase, Test_supabase;
-var init_test_supabase_b383c63a = __esm({
-  ".svelte-kit/output/server/chunks/test-supabase-b383c63a.js"() {
+async function load2() {
+  const { data, error: error2 } = await supabase.from("properties").select();
+  if (error2)
+    throw new Error(error2.message);
+  return { props: { data } };
+}
+var import_supabase_js, import_cookie4, supabaseUrl, supabaseKey, supabase, Test_supabase;
+var init_test_supabase_2543d1ad = __esm({
+  ".svelte-kit/output/server/chunks/test-supabase-2543d1ad.js"() {
     init_shims();
-    init_app_56849ea8();
+    init_app_19e2c4d8();
     import_supabase_js = __toModule(require_main5());
     init_ssr();
     import_cookie4 = __toModule(require_cookie());
     init_dist();
-    supabase = (0, import_supabase_js.createClient)("<your-supabase-url>", "<your-supabase-public-key>", {
-      fetch: (...args) => fetch(...args)
-    });
+    supabaseUrl = "https://nphykmdyafqximjeemqm.supabase.co";
+    supabaseKey = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJyb2xlIjoiYW5vbiIsImlhdCI6MTY0MDE2MzE1MCwiZXhwIjoxOTU1NzM5MTUwfQ.-w1NRh4b-iPxprky42PiYQ211LewXV_hiIJ8GrB7kNY";
+    supabase = (0, import_supabase_js.createClient)(supabaseUrl, supabaseKey);
     Test_supabase = create_ssr_component(($$result, $$props, $$bindings, slots) => {
-      async function getData() {
-        const { data, error: error2 } = await supabase.from("properties").select();
-        if (error2)
-          throw new Error(error2.message);
-        return data;
-      }
+      let { data } = $$props;
+      if ($$props.data === void 0 && $$bindings.data && data !== void 0)
+        $$bindings.data(data);
       return `${$$result.head += `${$$result.title = `<title>TEST</title>`, ""}`, ""}
 
 
@@ -15229,29 +15233,29 @@ ${function(__value) {
   <p>Fetching data...</p>
 `;
         }
-        return function(data) {
+        return function(data2) {
           return `
-  ${each(data, (properties) => `<li>${escape2(properties.name)}</li>`)}
+<ul>${each(data2, (properties) => `<li>${escape2(properties.name)}</li>`)}</ul>
 `;
         }(__value);
-      }(getData())}</section>`;
+      }(data)}</section>`;
     });
   }
 });
 
-// .svelte-kit/output/server/chunks/about-0fe3ea36.js
-var about_0fe3ea36_exports = {};
-__export(about_0fe3ea36_exports, {
+// .svelte-kit/output/server/chunks/about-c4ccd410.js
+var about_c4ccd410_exports = {};
+__export(about_c4ccd410_exports, {
   default: () => About,
   hydrate: () => hydrate,
   prerender: () => prerender2,
   router: () => router
 });
 var import_cookie5, browser, dev, css3, hydrate, router, prerender2, About;
-var init_about_0fe3ea36 = __esm({
-  ".svelte-kit/output/server/chunks/about-0fe3ea36.js"() {
+var init_about_c4ccd410 = __esm({
+  ".svelte-kit/output/server/chunks/about-c4ccd410.js"() {
     init_shims();
-    init_app_56849ea8();
+    init_app_19e2c4d8();
     init_ssr();
     import_cookie5 = __toModule(require_cookie());
     init_dist();
@@ -15290,17 +15294,17 @@ var init_about_0fe3ea36 = __esm({
   }
 });
 
-// .svelte-kit/output/server/chunks/index-a53561d2.js
-var index_a53561d2_exports = {};
-__export(index_a53561d2_exports, {
+// .svelte-kit/output/server/chunks/index-44a5ef60.js
+var index_44a5ef60_exports = {};
+__export(index_44a5ef60_exports, {
   default: () => Todos,
-  load: () => load2
+  load: () => load3
 });
-var import_cookie6, css4, load2, Todos;
-var init_index_a53561d2 = __esm({
-  ".svelte-kit/output/server/chunks/index-a53561d2.js"() {
+var import_cookie6, css4, load3, Todos;
+var init_index_44a5ef60 = __esm({
+  ".svelte-kit/output/server/chunks/index-44a5ef60.js"() {
     init_shims();
-    init_app_56849ea8();
+    init_app_19e2c4d8();
     init_ssr();
     import_cookie6 = __toModule(require_cookie());
     init_dist();
@@ -15308,7 +15312,7 @@ var init_index_a53561d2 = __esm({
       code: `.todos.svelte-dmxqmd.svelte-dmxqmd.svelte-dmxqmd{width:100%;max-width:var(--column-width);margin:var(--column-margin-top) auto 0 auto;line-height:1}.new.svelte-dmxqmd.svelte-dmxqmd.svelte-dmxqmd{margin:0 0 0.5rem 0}input.svelte-dmxqmd.svelte-dmxqmd.svelte-dmxqmd{border:1px solid transparent}input.svelte-dmxqmd.svelte-dmxqmd.svelte-dmxqmd:focus-visible{box-shadow:inset 1px 1px 6px rgba(0, 0, 0, 0.1);border:1px solid #ff3e00 !important;outline:none}.new.svelte-dmxqmd input.svelte-dmxqmd.svelte-dmxqmd{font-size:28px;width:100%;padding:0.5em 1em 0.3em 1em;box-sizing:border-box;background:rgba(255, 255, 255, 0.05);border-radius:8px;text-align:center}.todo.svelte-dmxqmd.svelte-dmxqmd.svelte-dmxqmd{display:grid;grid-template-columns:2rem 1fr 2rem;grid-gap:0.5rem;align-items:center;margin:0 0 0.5rem 0;padding:0.5rem;background-color:white;border-radius:8px;filter:drop-shadow(2px 4px 6px rgba(0, 0, 0, 0.1));transform:translate(-1px, -1px);transition:filter 0.2s, transform 0.2s}.done.svelte-dmxqmd.svelte-dmxqmd.svelte-dmxqmd{transform:none;opacity:0.4;filter:drop-shadow(0px 0px 1px rgba(0, 0, 0, 0.1))}form.text.svelte-dmxqmd.svelte-dmxqmd.svelte-dmxqmd{position:relative;display:flex;align-items:center;flex:1}.todo.svelte-dmxqmd input.svelte-dmxqmd.svelte-dmxqmd{flex:1;padding:0.5em 2em 0.5em 0.8em;border-radius:3px}.todo.svelte-dmxqmd button.svelte-dmxqmd.svelte-dmxqmd{width:2em;height:2em;border:none;background-color:transparent;background-position:50% 50%;background-repeat:no-repeat}button.toggle.svelte-dmxqmd.svelte-dmxqmd.svelte-dmxqmd{border:1px solid rgba(0, 0, 0, 0.2);border-radius:50%;box-sizing:border-box;background-size:1em auto}.done.svelte-dmxqmd .toggle.svelte-dmxqmd.svelte-dmxqmd{background-image:url("data:image/svg+xml,%3Csvg width='22' height='16' viewBox='0 0 22 16' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M20.5 1.5L7.4375 14.5L1.5 8.5909' stroke='%23676778' stroke-width='1.5' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E")}.delete.svelte-dmxqmd.svelte-dmxqmd.svelte-dmxqmd{background-image:url("data:image/svg+xml,%3Csvg width='24' height='24' viewBox='0 0 24 24' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M4.5 5V22H19.5V5H4.5Z' fill='%23676778' stroke='%23676778' stroke-width='1.5' stroke-linejoin='round'/%3E%3Cpath d='M10 10V16.5' stroke='white' stroke-width='1.5' stroke-linecap='round' stroke-linejoin='round'/%3E%3Cpath d='M14 10V16.5' stroke='white' stroke-width='1.5' stroke-linecap='round' stroke-linejoin='round'/%3E%3Cpath d='M2 5H22' stroke='%23676778' stroke-width='1.5' stroke-linecap='round' stroke-linejoin='round'/%3E%3Cpath d='M8 5L9.6445 2H14.3885L16 5H8Z' fill='%23676778' stroke='%23676778' stroke-width='1.5' stroke-linejoin='round'/%3E%3C/svg%3E%0A");opacity:0.2}.delete.svelte-dmxqmd.svelte-dmxqmd.svelte-dmxqmd:hover,.delete.svelte-dmxqmd.svelte-dmxqmd.svelte-dmxqmd:focus{transition:opacity 0.2s;opacity:1}.save.svelte-dmxqmd.svelte-dmxqmd.svelte-dmxqmd{position:absolute;right:0;opacity:0;background-image:url("data:image/svg+xml,%3Csvg width='24' height='24' viewBox='0 0 24 24' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M20.5 2H3.5C2.67158 2 2 2.67157 2 3.5V20.5C2 21.3284 2.67158 22 3.5 22H20.5C21.3284 22 22 21.3284 22 20.5V3.5C22 2.67157 21.3284 2 20.5 2Z' fill='%23676778' stroke='%23676778' stroke-width='1.5' stroke-linejoin='round'/%3E%3Cpath d='M17 2V11H7.5V2H17Z' fill='white' stroke='white' stroke-width='1.5' stroke-linejoin='round'/%3E%3Cpath d='M13.5 5.5V7.5' stroke='%23676778' stroke-width='1.5' stroke-linecap='round'/%3E%3Cpath d='M5.99844 2H18.4992' stroke='%23676778' stroke-width='1.5' stroke-linecap='round'/%3E%3C/svg%3E%0A")}.todo.svelte-dmxqmd input.svelte-dmxqmd:focus+.save.svelte-dmxqmd,.save.svelte-dmxqmd.svelte-dmxqmd.svelte-dmxqmd:focus{transition:opacity 0.2s;opacity:1}`,
       map: null
     };
-    load2 = async ({ fetch: fetch2 }) => {
+    load3 = async ({ fetch: fetch2 }) => {
       const res = await fetch2("/todos.json");
       if (res.ok) {
         const todos = await res.json();
@@ -15341,7 +15345,7 @@ var init_index_a53561d2 = __esm({
   }
 });
 
-// .svelte-kit/output/server/chunks/app-56849ea8.js
+// .svelte-kit/output/server/chunks/app-19e2c4d8.js
 function noop3() {
 }
 function is_promise(value) {
@@ -15476,9 +15480,9 @@ function init(settings = default_settings) {
     amp: false,
     dev: false,
     entry: {
-      file: assets + "/_app/start-77df1a95.js",
+      file: assets + "/_app/start-40bb9436.js",
       css: [assets + "/_app/assets/start-61d1577b.css"],
-      js: [assets + "/_app/start-77df1a95.js", assets + "/_app/chunks/vendor-b6deef9a.js"]
+      js: [assets + "/_app/start-40bb9436.js", assets + "/_app/chunks/vendor-b6deef9a.js"]
     },
     fetched: void 0,
     floc: false,
@@ -15522,8 +15526,8 @@ function render(request, {
   return respond({ ...request, host }, options, { prerender: prerender3 });
 }
 var import_cookie7, is_client, now, raf, tasks, current_component, escaped2, missing_component, on_destroy, css5, Root, base2, assets, handle, user_hooks, template, options, default_settings, d, empty, manifest, get_hooks, module_lookup, metadata_lookup;
-var init_app_56849ea8 = __esm({
-  ".svelte-kit/output/server/chunks/app-56849ea8.js"() {
+var init_app_19e2c4d8 = __esm({
+  ".svelte-kit/output/server/chunks/app-19e2c4d8.js"() {
     init_shims();
     init_ssr();
     import_cookie7 = __toModule(require_cookie());
@@ -15665,14 +15669,14 @@ ${``}`;
       externalFetch: hooks.externalFetch || fetch
     });
     module_lookup = {
-      "src/routes/__layout.svelte": () => Promise.resolve().then(() => (init_layout_36c746fd(), layout_36c746fd_exports)),
-      ".svelte-kit/build/components/error.svelte": () => Promise.resolve().then(() => (init_error_c522262a(), error_c522262a_exports)),
-      "src/routes/index.svelte": () => Promise.resolve().then(() => (init_index_76ab6354(), index_76ab6354_exports)),
-      "src/routes/test-supabase.svelte": () => Promise.resolve().then(() => (init_test_supabase_b383c63a(), test_supabase_b383c63a_exports)),
-      "src/routes/about.svelte": () => Promise.resolve().then(() => (init_about_0fe3ea36(), about_0fe3ea36_exports)),
-      "src/routes/todos/index.svelte": () => Promise.resolve().then(() => (init_index_a53561d2(), index_a53561d2_exports))
+      "src/routes/__layout.svelte": () => Promise.resolve().then(() => (init_layout_821dac8f(), layout_821dac8f_exports)),
+      ".svelte-kit/build/components/error.svelte": () => Promise.resolve().then(() => (init_error_a08e7017(), error_a08e7017_exports)),
+      "src/routes/index.svelte": () => Promise.resolve().then(() => (init_index_b491ed2e(), index_b491ed2e_exports)),
+      "src/routes/test-supabase.svelte": () => Promise.resolve().then(() => (init_test_supabase_2543d1ad(), test_supabase_2543d1ad_exports)),
+      "src/routes/about.svelte": () => Promise.resolve().then(() => (init_about_c4ccd410(), about_c4ccd410_exports)),
+      "src/routes/todos/index.svelte": () => Promise.resolve().then(() => (init_index_44a5ef60(), index_44a5ef60_exports))
     };
-    metadata_lookup = { "src/routes/__layout.svelte": { "entry": "pages/__layout.svelte-d38a6782.js", "css": ["assets/pages/__layout.svelte-a7861b78.css"], "js": ["pages/__layout.svelte-d38a6782.js", "chunks/vendor-b6deef9a.js"], "styles": [] }, ".svelte-kit/build/components/error.svelte": { "entry": "error.svelte-0b806d1b.js", "css": [], "js": ["error.svelte-0b806d1b.js", "chunks/vendor-b6deef9a.js"], "styles": [] }, "src/routes/index.svelte": { "entry": "pages/index.svelte-1efcc0e6.js", "css": ["assets/pages/index.svelte-c63fe1c6.css"], "js": ["pages/index.svelte-1efcc0e6.js", "chunks/vendor-b6deef9a.js"], "styles": [] }, "src/routes/test-supabase.svelte": { "entry": "pages/test-supabase.svelte-11beddb1.js", "css": [], "js": ["pages/test-supabase.svelte-11beddb1.js", "chunks/vendor-b6deef9a.js"], "styles": [] }, "src/routes/about.svelte": { "entry": "pages/about.svelte-50200fc0.js", "css": ["assets/pages/about.svelte-bf4528fa.css"], "js": ["pages/about.svelte-50200fc0.js", "chunks/vendor-b6deef9a.js"], "styles": [] }, "src/routes/todos/index.svelte": { "entry": "pages/todos/index.svelte-5f55c782.js", "css": ["assets/pages/todos/index.svelte-784042c1.css"], "js": ["pages/todos/index.svelte-5f55c782.js", "chunks/vendor-b6deef9a.js"], "styles": [] } };
+    metadata_lookup = { "src/routes/__layout.svelte": { "entry": "pages/__layout.svelte-d38a6782.js", "css": ["assets/pages/__layout.svelte-a7861b78.css"], "js": ["pages/__layout.svelte-d38a6782.js", "chunks/vendor-b6deef9a.js"], "styles": [] }, ".svelte-kit/build/components/error.svelte": { "entry": "error.svelte-0b806d1b.js", "css": [], "js": ["error.svelte-0b806d1b.js", "chunks/vendor-b6deef9a.js"], "styles": [] }, "src/routes/index.svelte": { "entry": "pages/index.svelte-1efcc0e6.js", "css": ["assets/pages/index.svelte-c63fe1c6.css"], "js": ["pages/index.svelte-1efcc0e6.js", "chunks/vendor-b6deef9a.js"], "styles": [] }, "src/routes/test-supabase.svelte": { "entry": "pages/test-supabase.svelte-ea2a609a.js", "css": [], "js": ["pages/test-supabase.svelte-ea2a609a.js", "chunks/vendor-b6deef9a.js"], "styles": [] }, "src/routes/about.svelte": { "entry": "pages/about.svelte-50200fc0.js", "css": ["assets/pages/about.svelte-bf4528fa.css"], "js": ["pages/about.svelte-50200fc0.js", "chunks/vendor-b6deef9a.js"], "styles": [] }, "src/routes/todos/index.svelte": { "entry": "pages/todos/index.svelte-5f55c782.js", "css": ["assets/pages/todos/index.svelte-784042c1.css"], "js": ["pages/todos/index.svelte-5f55c782.js", "chunks/vendor-b6deef9a.js"], "styles": [] } };
   }
 });
 
@@ -15726,7 +15730,7 @@ function getRawBody(req) {
 // .svelte-kit/output/server/app.js
 init_shims();
 init_ssr();
-init_app_56849ea8();
+init_app_19e2c4d8();
 var import_cookie8 = __toModule(require_cookie());
 init_dist();
 
