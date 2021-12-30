@@ -1,4 +1,4 @@
-<script context="module">
+<!-- <script context="module">
 	import supabase from '$lib/db' 
 
 
@@ -6,6 +6,7 @@ export async function load() {
   const { data, error } = await supabase
     .from('properties')
     .select()
+
   if (error) throw new Error(error.message)
   
   return {props:{data}}
@@ -15,6 +16,7 @@ export async function load() {
 
 <script>
    export let data;
+ 
 </script>
 <svelte:head>
 	<title>TEST</title>
@@ -42,4 +44,4 @@ export async function load() {
   <p>Something went wrong while fetching the data:</p>
   <pre>{error}</pre>
 {/await}
-</section>
+</section> -->

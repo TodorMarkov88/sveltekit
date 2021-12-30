@@ -6040,6 +6040,7 @@ async function load_node({
             ...opts
           };
         }
+        opts.headers = new Headers(opts.headers);
         const resolved = resolve(request.path, url.split("?")[0]);
         let response;
         const prefix = options2.paths.assets || options2.paths.base;
@@ -6052,14 +6053,13 @@ async function load_node({
           }) : await fetch(`http://${page2.host}/${asset.file}`, opts);
         } else if (is_root_relative(resolved)) {
           const relative = resolved;
-          const headers = {
-            ...opts.headers
-          };
           if (opts.credentials !== "omit") {
             uses_credentials = true;
-            headers.cookie = request.headers.cookie;
-            if (!headers.authorization) {
-              headers.authorization = request.headers.authorization;
+            if (request.headers.cookie) {
+              opts.headers.set("cookie", request.headers.cookie);
+            }
+            if (request.headers.authorization && !opts.headers.has("authorization")) {
+              opts.headers.set("authorization", request.headers.authorization);
             }
           }
           if (opts.body && typeof opts.body !== "string") {
@@ -6069,7 +6069,7 @@ async function load_node({
           const rendered = await respond({
             host: request.host,
             method: opts.method || "GET",
-            headers,
+            headers: Object.fromEntries(opts.headers),
             path: relative,
             rawBody: opts.body == null ? null : new TextEncoder().encode(opts.body),
             query: new URLSearchParams(search)
@@ -6095,10 +6095,7 @@ async function load_node({
             const [server_hostname] = request.host.split(":");
             if (`.${fetch_hostname}`.endsWith(`.${server_hostname}`) && opts.credentials !== "omit") {
               uses_credentials = true;
-              opts.headers = {
-                ...opts.headers,
-                cookie: request.headers.cookie
-              };
+              opts.headers.set("cookie", request.headers.cookie);
             }
           }
           const external_request = new Request(url, opts);
@@ -6909,16 +6906,16 @@ var init_uid_json_095450d2 = __esm({
   }
 });
 
-// .svelte-kit/output/server/chunks/__layout-821dac8f.js
-var layout_821dac8f_exports = {};
-__export(layout_821dac8f_exports, {
+// .svelte-kit/output/server/chunks/__layout-27b5a121.js
+var layout_27b5a121_exports = {};
+__export(layout_27b5a121_exports, {
   default: () => _layout
 });
 var import_cookie, getStores, page, logo, css$1, Header, css, _layout;
-var init_layout_821dac8f = __esm({
-  ".svelte-kit/output/server/chunks/__layout-821dac8f.js"() {
+var init_layout_27b5a121 = __esm({
+  ".svelte-kit/output/server/chunks/__layout-27b5a121.js"() {
     init_shims();
-    init_app_19e2c4d8();
+    init_app_a8825c65();
     init_ssr();
     import_cookie = __toModule(require_cookie());
     init_dist();
@@ -6969,24 +6966,24 @@ var init_layout_821dac8f = __esm({
 </header>`;
     });
     css = {
-      code: "main.svelte-1izrdc8.svelte-1izrdc8{flex:1;display:flex;flex-direction:column;padding:1rem;width:100%;max-width:1024px;margin:0 auto;box-sizing:border-box}footer.svelte-1izrdc8.svelte-1izrdc8{display:flex;flex-direction:column;justify-content:center;align-items:center;padding:40px}footer.svelte-1izrdc8 a.svelte-1izrdc8{font-weight:bold}@media(min-width: 480px){footer.svelte-1izrdc8.svelte-1izrdc8{padding:40px 0}}",
+      code: "main.svelte-16e22wk.svelte-16e22wk{flex:1;display:flex;flex-direction:column;padding:1rem;width:100%;max-width:1024px;margin:0 auto;box-sizing:border-box}footer.svelte-16e22wk.svelte-16e22wk{display:flex;flex-direction:column;justify-content:center;align-items:center;padding:40px}footer.svelte-16e22wk a.svelte-16e22wk{font-weight:bold}@media(min-width: 480px){footer.svelte-16e22wk.svelte-16e22wk{padding:40px 0}}@tailwind base;@tailwind components;@tailwind utilities;",
       map: null
     };
     _layout = create_ssr_component(($$result, $$props, $$bindings, slots) => {
       $$result.css.add(css);
       return `${validate_component(Header, "Header").$$render($$result, {}, {}, {})}
 
-<main class="${"svelte-1izrdc8"}">${slots.default ? slots.default({}) : ``}</main>
+<main class="${"svelte-16e22wk"}">${slots.default ? slots.default({}) : ``}</main>
 
-<footer class="${"svelte-1izrdc8"}"><p>visit <a href="${"https://kit.svelte.dev"}" class="${"svelte-1izrdc8"}">kit.svelte.dev</a> to learn SvelteKit</p>
+<footer class="${"svelte-16e22wk"}"><p>visit <a href="${"https://kit.svelte.dev"}" class="${"svelte-16e22wk"}">kit.svelte.dev</a> to learn SvelteKit</p>
 </footer>`;
     });
   }
 });
 
-// .svelte-kit/output/server/chunks/error-a08e7017.js
-var error_a08e7017_exports = {};
-__export(error_a08e7017_exports, {
+// .svelte-kit/output/server/chunks/error-b97dd973.js
+var error_b97dd973_exports = {};
+__export(error_b97dd973_exports, {
   default: () => Error2,
   load: () => load
 });
@@ -6994,10 +6991,10 @@ function load({ error: error2, status }) {
   return { props: { error: error2, status } };
 }
 var import_cookie2, Error2;
-var init_error_a08e7017 = __esm({
-  ".svelte-kit/output/server/chunks/error-a08e7017.js"() {
+var init_error_b97dd973 = __esm({
+  ".svelte-kit/output/server/chunks/error-b97dd973.js"() {
     init_shims();
-    init_app_19e2c4d8();
+    init_app_a8825c65();
     init_ssr();
     import_cookie2 = __toModule(require_cookie());
     init_dist();
@@ -7020,9 +7017,9 @@ ${error2.stack ? `<pre>${escape2(error2.stack)}</pre>` : ``}`;
   }
 });
 
-// .svelte-kit/output/server/chunks/index-b491ed2e.js
-var index_b491ed2e_exports = {};
-__export(index_b491ed2e_exports, {
+// .svelte-kit/output/server/chunks/index-63d5db52.js
+var index_63d5db52_exports = {};
+__export(index_63d5db52_exports, {
   default: () => Routes,
   prerender: () => prerender
 });
@@ -7168,10 +7165,10 @@ function modulo(n, m2) {
   return (n % m2 + m2) % m2;
 }
 var import_cookie3, subscriber_queue2, css$12, Counter, css2, prerender, Routes;
-var init_index_b491ed2e = __esm({
-  ".svelte-kit/output/server/chunks/index-b491ed2e.js"() {
+var init_index_63d5db52 = __esm({
+  ".svelte-kit/output/server/chunks/index-63d5db52.js"() {
     init_shims();
-    init_app_19e2c4d8();
+    init_app_a8825c65();
     init_ssr();
     import_cookie3 = __toModule(require_cookie());
     init_dist();
@@ -7219,6 +7216,25 @@ var init_index_b491ed2e = __esm({
 
 	${validate_component(Counter, "Counter").$$render($$result, {}, {}, {})}
 </section>`;
+    });
+  }
+});
+
+// .svelte-kit/output/server/chunks/test-supabase-b963b9c0.js
+var test_supabase_b963b9c0_exports = {};
+__export(test_supabase_b963b9c0_exports, {
+  default: () => Test_supabase
+});
+var import_cookie4, Test_supabase;
+var init_test_supabase_b963b9c0 = __esm({
+  ".svelte-kit/output/server/chunks/test-supabase-b963b9c0.js"() {
+    init_shims();
+    init_app_a8825c65();
+    init_ssr();
+    import_cookie4 = __toModule(require_cookie());
+    init_dist();
+    Test_supabase = create_ssr_component(($$result, $$props, $$bindings, slots) => {
+      return ``;
     });
   }
 });
@@ -15188,76 +15204,60 @@ var require_main5 = __commonJS({
   }
 });
 
-// .svelte-kit/output/server/chunks/test-supabase-2543d1ad.js
-var test_supabase_2543d1ad_exports = {};
-__export(test_supabase_2543d1ad_exports, {
-  default: () => Test_supabase,
+// .svelte-kit/output/server/chunks/_id_-bbf8980e.js
+var id_bbf8980e_exports = {};
+__export(id_bbf8980e_exports, {
+  default: () => U5Bidu5D,
   load: () => load2
 });
-async function load2() {
-  const { data, error: error2 } = await supabase.from("properties").select();
+async function load2({ page: page2 }) {
+  const id = page2.params.id;
+  const { data, error: error2 } = await supabase.from("properties").select().eq("id", id);
   if (error2)
     throw new Error(error2.message);
   return { props: { data } };
 }
-var import_supabase_js, import_cookie4, supabaseUrl, supabaseKey, supabase, Test_supabase;
-var init_test_supabase_2543d1ad = __esm({
-  ".svelte-kit/output/server/chunks/test-supabase-2543d1ad.js"() {
+var import_supabase_js, import_cookie5, supabaseUrl, supabaseKey, supabase, U5Bidu5D;
+var init_id_bbf8980e = __esm({
+  ".svelte-kit/output/server/chunks/_id_-bbf8980e.js"() {
     init_shims();
-    init_app_19e2c4d8();
+    init_app_a8825c65();
     import_supabase_js = __toModule(require_main5());
     init_ssr();
-    import_cookie4 = __toModule(require_cookie());
+    import_cookie5 = __toModule(require_cookie());
     init_dist();
     supabaseUrl = "https://nphykmdyafqximjeemqm.supabase.co";
     supabaseKey = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJyb2xlIjoiYW5vbiIsImlhdCI6MTY0MDE2MzE1MCwiZXhwIjoxOTU1NzM5MTUwfQ.-w1NRh4b-iPxprky42PiYQ211LewXV_hiIJ8GrB7kNY";
     supabase = (0, import_supabase_js.createClient)(supabaseUrl, supabaseKey);
-    Test_supabase = create_ssr_component(($$result, $$props, $$bindings, slots) => {
+    U5Bidu5D = create_ssr_component(($$result, $$props, $$bindings, slots) => {
       let { data } = $$props;
+      const imgUrl = `https://nphykmdyafqximjeemqm.supabase.in/storage/v1/object/public/images/${data[0].id}.jpeg`;
       if ($$props.data === void 0 && $$bindings.data && data !== void 0)
         $$bindings.data(data);
-      return `${$$result.head += `${$$result.title = `<title>TEST</title>`, ""}`, ""}
+      return `<img${add_attribute("src", imgUrl, 0)} style="${"width:300px;height:300px;"}">
 
+<div>${escape2(data[0].location_city)}</div>
 
-
-
-
-
- 
-
-<section><h1>My favorite games</h1>
-${function(__value) {
-        if (is_promise(__value)) {
-          __value.then(null, noop3);
-          return `
-  <p>Fetching data...</p>
-`;
-        }
-        return function(data2) {
-          return `
-<ul>${each(data2, (properties) => `<li>${escape2(properties.name)}</li>`)}</ul>
-`;
-        }(__value);
-      }(data)}</section>`;
+<div>${escape2(data[0].id)}</div>`;
     });
   }
 });
 
-// .svelte-kit/output/server/chunks/about-c4ccd410.js
-var about_c4ccd410_exports = {};
-__export(about_c4ccd410_exports, {
+// .svelte-kit/output/server/chunks/about-f386545d.js
+var about_f386545d_exports = {};
+__export(about_f386545d_exports, {
   default: () => About,
   hydrate: () => hydrate,
   prerender: () => prerender2,
   router: () => router
 });
-var import_cookie5, browser, dev, css3, hydrate, router, prerender2, About;
-var init_about_c4ccd410 = __esm({
-  ".svelte-kit/output/server/chunks/about-c4ccd410.js"() {
+var import_cookie6, browser, dev, css3, hydrate, router, prerender2, About;
+var init_about_f386545d = __esm({
+  ".svelte-kit/output/server/chunks/about-f386545d.js"() {
     init_shims();
-    init_app_19e2c4d8();
+    init_app_a8825c65();
     init_ssr();
-    import_cookie5 = __toModule(require_cookie());
+    import_cookie6 = __toModule(require_cookie());
     init_dist();
     browser = false;
     dev = false;
@@ -15294,19 +15294,19 @@ var init_about_c4ccd410 = __esm({
   }
 });
 
-// .svelte-kit/output/server/chunks/index-44a5ef60.js
-var index_44a5ef60_exports = {};
-__export(index_44a5ef60_exports, {
+// .svelte-kit/output/server/chunks/index-a0a35926.js
+var index_a0a35926_exports = {};
+__export(index_a0a35926_exports, {
   default: () => Todos,
   load: () => load3
 });
-var import_cookie6, css4, load3, Todos;
-var init_index_44a5ef60 = __esm({
-  ".svelte-kit/output/server/chunks/index-44a5ef60.js"() {
+var import_cookie7, css4, load3, Todos;
+var init_index_a0a35926 = __esm({
+  ".svelte-kit/output/server/chunks/index-a0a35926.js"() {
     init_shims();
-    init_app_19e2c4d8();
+    init_app_a8825c65();
     init_ssr();
-    import_cookie6 = __toModule(require_cookie());
+    import_cookie7 = __toModule(require_cookie());
     init_dist();
     css4 = {
       code: `.todos.svelte-dmxqmd.svelte-dmxqmd.svelte-dmxqmd{width:100%;max-width:var(--column-width);margin:var(--column-margin-top) auto 0 auto;line-height:1}.new.svelte-dmxqmd.svelte-dmxqmd.svelte-dmxqmd{margin:0 0 0.5rem 0}input.svelte-dmxqmd.svelte-dmxqmd.svelte-dmxqmd{border:1px solid transparent}input.svelte-dmxqmd.svelte-dmxqmd.svelte-dmxqmd:focus-visible{box-shadow:inset 1px 1px 6px rgba(0, 0, 0, 0.1);border:1px solid #ff3e00 !important;outline:none}.new.svelte-dmxqmd input.svelte-dmxqmd.svelte-dmxqmd{font-size:28px;width:100%;padding:0.5em 1em 0.3em 1em;box-sizing:border-box;background:rgba(255, 255, 255, 0.05);border-radius:8px;text-align:center}.todo.svelte-dmxqmd.svelte-dmxqmd.svelte-dmxqmd{display:grid;grid-template-columns:2rem 1fr 2rem;grid-gap:0.5rem;align-items:center;margin:0 0 0.5rem 0;padding:0.5rem;background-color:white;border-radius:8px;filter:drop-shadow(2px 4px 6px rgba(0, 0, 0, 0.1));transform:translate(-1px, -1px);transition:filter 0.2s, transform 0.2s}.done.svelte-dmxqmd.svelte-dmxqmd.svelte-dmxqmd{transform:none;opacity:0.4;filter:drop-shadow(0px 0px 1px rgba(0, 0, 0, 0.1))}form.text.svelte-dmxqmd.svelte-dmxqmd.svelte-dmxqmd{position:relative;display:flex;align-items:center;flex:1}.todo.svelte-dmxqmd input.svelte-dmxqmd.svelte-dmxqmd{flex:1;padding:0.5em 2em 0.5em 0.8em;border-radius:3px}.todo.svelte-dmxqmd button.svelte-dmxqmd.svelte-dmxqmd{width:2em;height:2em;border:none;background-color:transparent;background-position:50% 50%;background-repeat:no-repeat}button.toggle.svelte-dmxqmd.svelte-dmxqmd.svelte-dmxqmd{border:1px solid rgba(0, 0, 0, 0.2);border-radius:50%;box-sizing:border-box;background-size:1em auto}.done.svelte-dmxqmd .toggle.svelte-dmxqmd.svelte-dmxqmd{background-image:url("data:image/svg+xml,%3Csvg width='22' height='16' viewBox='0 0 22 16' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M20.5 1.5L7.4375 14.5L1.5 8.5909' stroke='%23676778' stroke-width='1.5' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E")}.delete.svelte-dmxqmd.svelte-dmxqmd.svelte-dmxqmd{background-image:url("data:image/svg+xml,%3Csvg width='24' height='24' viewBox='0 0 24 24' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M4.5 5V22H19.5V5H4.5Z' fill='%23676778' stroke='%23676778' stroke-width='1.5' stroke-linejoin='round'/%3E%3Cpath d='M10 10V16.5' stroke='white' stroke-width='1.5' stroke-linecap='round' stroke-linejoin='round'/%3E%3Cpath d='M14 10V16.5' stroke='white' stroke-width='1.5' stroke-linecap='round' stroke-linejoin='round'/%3E%3Cpath d='M2 5H22' stroke='%23676778' stroke-width='1.5' stroke-linecap='round' stroke-linejoin='round'/%3E%3Cpath d='M8 5L9.6445 2H14.3885L16 5H8Z' fill='%23676778' stroke='%23676778' stroke-width='1.5' stroke-linejoin='round'/%3E%3C/svg%3E%0A");opacity:0.2}.delete.svelte-dmxqmd.svelte-dmxqmd.svelte-dmxqmd:hover,.delete.svelte-dmxqmd.svelte-dmxqmd.svelte-dmxqmd:focus{transition:opacity 0.2s;opacity:1}.save.svelte-dmxqmd.svelte-dmxqmd.svelte-dmxqmd{position:absolute;right:0;opacity:0;background-image:url("data:image/svg+xml,%3Csvg width='24' height='24' viewBox='0 0 24 24' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M20.5 2H3.5C2.67158 2 2 2.67157 2 3.5V20.5C2 21.3284 2.67158 22 3.5 22H20.5C21.3284 22 22 21.3284 22 20.5V3.5C22 2.67157 21.3284 2 20.5 2Z' fill='%23676778' stroke='%23676778' stroke-width='1.5' stroke-linejoin='round'/%3E%3Cpath d='M17 2V11H7.5V2H17Z' fill='white' stroke='white' stroke-width='1.5' stroke-linejoin='round'/%3E%3Cpath d='M13.5 5.5V7.5' stroke='%23676778' stroke-width='1.5' stroke-linecap='round'/%3E%3Cpath d='M5.99844 2H18.4992' stroke='%23676778' stroke-width='1.5' stroke-linecap='round'/%3E%3C/svg%3E%0A")}.todo.svelte-dmxqmd input.svelte-dmxqmd:focus+.save.svelte-dmxqmd,.save.svelte-dmxqmd.svelte-dmxqmd.svelte-dmxqmd:focus{transition:opacity 0.2s;opacity:1}`,
@@ -15345,11 +15345,8 @@ var init_index_44a5ef60 = __esm({
   }
 });
 
-// .svelte-kit/output/server/chunks/app-19e2c4d8.js
+// .svelte-kit/output/server/chunks/app-a8825c65.js
 function noop3() {
-}
-function is_promise(value) {
-  return value && typeof value === "object" && typeof value.then === "function";
 }
 function run(fn) {
   return fn();
@@ -15480,9 +15477,9 @@ function init(settings = default_settings) {
     amp: false,
     dev: false,
     entry: {
-      file: assets + "/_app/start-40bb9436.js",
-      css: [assets + "/_app/assets/start-61d1577b.css"],
-      js: [assets + "/_app/start-40bb9436.js", assets + "/_app/chunks/vendor-b6deef9a.js"]
+      file: assets + "/_app/start-04c8f9f2.js",
+      css: [assets + "/_app/assets/start-d5b4de3e.css"],
+      js: [assets + "/_app/start-04c8f9f2.js", assets + "/_app/chunks/vendor-a486c449.js"]
     },
     fetched: void 0,
     floc: false,
@@ -15525,12 +15522,12 @@ function render(request, {
   const host = request.headers["host"];
   return respond({ ...request, host }, options, { prerender: prerender3 });
 }
-var import_cookie7, is_client, now, raf, tasks, current_component, escaped2, missing_component, on_destroy, css5, Root, base2, assets, handle, user_hooks, template, options, default_settings, d, empty, manifest, get_hooks, module_lookup, metadata_lookup;
-var init_app_19e2c4d8 = __esm({
-  ".svelte-kit/output/server/chunks/app-19e2c4d8.js"() {
+var import_cookie8, is_client, now, raf, tasks, current_component, escaped2, missing_component, on_destroy, css5, Root, base2, assets, handle, user_hooks, template, options, default_settings, d, empty, manifest, get_hooks, module_lookup, metadata_lookup;
+var init_app_a8825c65 = __esm({
+  ".svelte-kit/output/server/chunks/app-a8825c65.js"() {
     init_shims();
     init_ssr();
-    import_cookie7 = __toModule(require_cookie());
+    import_cookie8 = __toModule(require_cookie());
     init_dist();
     is_client = typeof window !== "undefined";
     now = is_client ? () => window.performance.now() : () => Date.now();
@@ -15579,18 +15576,18 @@ var init_app_19e2c4d8 = __esm({
       return `
 
 
-${validate_component(components[0] || missing_component, "svelte:component").$$render($$result, Object.assign(props_0 || {}), {}, {
-        default: () => `${components[1] ? `${validate_component(components[1] || missing_component, "svelte:component").$$render($$result, Object.assign(props_1 || {}), {}, {
-          default: () => `${components[2] ? `${validate_component(components[2] || missing_component, "svelte:component").$$render($$result, Object.assign(props_2 || {}), {}, {})}` : ``}`
-        })}` : ``}`
-      })}
+${components[1] ? `${validate_component(components[0] || missing_component, "svelte:component").$$render($$result, Object.assign(props_0 || {}), {}, {
+        default: () => `${components[2] ? `${validate_component(components[1] || missing_component, "svelte:component").$$render($$result, Object.assign(props_1 || {}), {}, {
+          default: () => `${validate_component(components[2] || missing_component, "svelte:component").$$render($$result, Object.assign(props_2 || {}), {}, {})}`
+        })}` : `${validate_component(components[1] || missing_component, "svelte:component").$$render($$result, Object.assign(props_1 || {}), {}, {})}`}`
+      })}` : `${validate_component(components[0] || missing_component, "svelte:component").$$render($$result, Object.assign(props_0 || {}), {}, {})}`}
 
 ${``}`;
     });
     base2 = "";
     assets = "";
     handle = async ({ request, resolve: resolve2 }) => {
-      const cookies = import_cookie7.default.parse(request.headers.cookie || "");
+      const cookies = import_cookie8.default.parse(request.headers.cookie || "");
       request.locals.userid = cookies.userid || v4();
       const method = request.query.get("_method");
       if (method) {
@@ -15598,7 +15595,7 @@ ${``}`;
       }
       const response = await resolve2(request);
       if (!cookies.userid) {
-        response.headers["set-cookie"] = import_cookie7.default.serialize("userid", request.locals.userid, {
+        response.headers["set-cookie"] = import_cookie8.default.serialize("userid", request.locals.userid, {
           path: "/",
           httpOnly: true
         });
@@ -15636,6 +15633,13 @@ ${``}`;
         },
         {
           type: "page",
+          pattern: /^\/properties\/([^/]+?)\/?$/,
+          params: (m2) => ({ id: d(m2[1]) }),
+          a: ["src/routes/__layout.svelte", "src/routes/properties/[id].svelte"],
+          b: [".svelte-kit/build/components/error.svelte"]
+        },
+        {
+          type: "page",
           pattern: /^\/about\/?$/,
           params: empty,
           a: ["src/routes/__layout.svelte", "src/routes/about.svelte"],
@@ -15669,14 +15673,15 @@ ${``}`;
       externalFetch: hooks.externalFetch || fetch
     });
     module_lookup = {
-      "src/routes/__layout.svelte": () => Promise.resolve().then(() => (init_layout_821dac8f(), layout_821dac8f_exports)),
-      ".svelte-kit/build/components/error.svelte": () => Promise.resolve().then(() => (init_error_a08e7017(), error_a08e7017_exports)),
-      "src/routes/index.svelte": () => Promise.resolve().then(() => (init_index_b491ed2e(), index_b491ed2e_exports)),
-      "src/routes/test-supabase.svelte": () => Promise.resolve().then(() => (init_test_supabase_2543d1ad(), test_supabase_2543d1ad_exports)),
-      "src/routes/about.svelte": () => Promise.resolve().then(() => (init_about_c4ccd410(), about_c4ccd410_exports)),
-      "src/routes/todos/index.svelte": () => Promise.resolve().then(() => (init_index_44a5ef60(), index_44a5ef60_exports))
+      "src/routes/__layout.svelte": () => Promise.resolve().then(() => (init_layout_27b5a121(), layout_27b5a121_exports)),
+      ".svelte-kit/build/components/error.svelte": () => Promise.resolve().then(() => (init_error_b97dd973(), error_b97dd973_exports)),
+      "src/routes/index.svelte": () => Promise.resolve().then(() => (init_index_63d5db52(), index_63d5db52_exports)),
+      "src/routes/test-supabase.svelte": () => Promise.resolve().then(() => (init_test_supabase_b963b9c0(), test_supabase_b963b9c0_exports)),
+      "src/routes/properties/[id].svelte": () => Promise.resolve().then(() => (init_id_bbf8980e(), id_bbf8980e_exports)),
+      "src/routes/about.svelte": () => Promise.resolve().then(() => (init_about_f386545d(), about_f386545d_exports)),
+      "src/routes/todos/index.svelte": () => Promise.resolve().then(() => (init_index_a0a35926(), index_a0a35926_exports))
     };
-    metadata_lookup = { "src/routes/__layout.svelte": { "entry": "pages/__layout.svelte-d38a6782.js", "css": ["assets/pages/__layout.svelte-a7861b78.css"], "js": ["pages/__layout.svelte-d38a6782.js", "chunks/vendor-b6deef9a.js"], "styles": [] }, ".svelte-kit/build/components/error.svelte": { "entry": "error.svelte-0b806d1b.js", "css": [], "js": ["error.svelte-0b806d1b.js", "chunks/vendor-b6deef9a.js"], "styles": [] }, "src/routes/index.svelte": { "entry": "pages/index.svelte-1efcc0e6.js", "css": ["assets/pages/index.svelte-c63fe1c6.css"], "js": ["pages/index.svelte-1efcc0e6.js", "chunks/vendor-b6deef9a.js"], "styles": [] }, "src/routes/test-supabase.svelte": { "entry": "pages/test-supabase.svelte-ea2a609a.js", "css": [], "js": ["pages/test-supabase.svelte-ea2a609a.js", "chunks/vendor-b6deef9a.js"], "styles": [] }, "src/routes/about.svelte": { "entry": "pages/about.svelte-50200fc0.js", "css": ["assets/pages/about.svelte-bf4528fa.css"], "js": ["pages/about.svelte-50200fc0.js", "chunks/vendor-b6deef9a.js"], "styles": [] }, "src/routes/todos/index.svelte": { "entry": "pages/todos/index.svelte-5f55c782.js", "css": ["assets/pages/todos/index.svelte-784042c1.css"], "js": ["pages/todos/index.svelte-5f55c782.js", "chunks/vendor-b6deef9a.js"], "styles": [] } };
+    metadata_lookup = { "src/routes/__layout.svelte": { "entry": "pages/__layout.svelte-62a12069.js", "css": ["assets/pages/__layout.svelte-9f590b26.css"], "js": ["pages/__layout.svelte-62a12069.js", "chunks/vendor-a486c449.js"], "styles": [] }, ".svelte-kit/build/components/error.svelte": { "entry": "error.svelte-4dd48069.js", "css": [], "js": ["error.svelte-4dd48069.js", "chunks/vendor-a486c449.js"], "styles": [] }, "src/routes/index.svelte": { "entry": "pages/index.svelte-ceea7d4a.js", "css": ["assets/pages/index.svelte-c63fe1c6.css"], "js": ["pages/index.svelte-ceea7d4a.js", "chunks/vendor-a486c449.js"], "styles": [] }, "src/routes/test-supabase.svelte": { "entry": "pages/test-supabase.svelte-4da3c516.js", "css": [], "js": ["pages/test-supabase.svelte-4da3c516.js", "chunks/vendor-a486c449.js"], "styles": [] }, "src/routes/properties/[id].svelte": { "entry": "pages/properties/_id_.svelte-6fed709e.js", "css": [], "js": ["pages/properties/_id_.svelte-6fed709e.js", "chunks/vendor-a486c449.js"], "styles": [] }, "src/routes/about.svelte": { "entry": "pages/about.svelte-1ca7a532.js", "css": ["assets/pages/about.svelte-bf4528fa.css"], "js": ["pages/about.svelte-1ca7a532.js", "chunks/vendor-a486c449.js"], "styles": [] }, "src/routes/todos/index.svelte": { "entry": "pages/todos/index.svelte-2af4573d.js", "css": ["assets/pages/todos/index.svelte-784042c1.css"], "js": ["pages/todos/index.svelte-2af4573d.js", "chunks/vendor-a486c449.js"], "styles": [] } };
   }
 });
 
@@ -15730,8 +15735,8 @@ function getRawBody(req) {
 // .svelte-kit/output/server/app.js
 init_shims();
 init_ssr();
-init_app_19e2c4d8();
-var import_cookie8 = __toModule(require_cookie());
+init_app_a8825c65();
+var import_cookie9 = __toModule(require_cookie());
 init_dist();
 
 // .svelte-kit/vercel/entry.js
