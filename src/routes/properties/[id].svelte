@@ -12,7 +12,11 @@
         type_desc: data.type_desc,
         image: `https://nphykmdyafqximjeemqm.supabase.in/storage/v1/object/public/images/${id}.jpeg`,
         offer_title: data.offer_title,
-           currency: data.currency
+        currency: data.currency,
+        price: data.price,
+        location_country:data.location_country,
+        location_city:data.location_city,
+        location_hood:data.location_hood
       };
     });
 
@@ -20,30 +24,42 @@
 
     return { props: { data: loadedProperty } };
   }
-  
 </script>
 
-<script >
+<script>
   export let data;
   const options = [
-    { name: "Unarmed", maxfight: 3, notes: "-1DT to Prw rolls", point: 0 },
-    { name: "Claws & Teeth", maxfight: 3, notes: "", point: 2 },
-    { name: "Horrible Claws & Teeth", maxfight: 3, notes: "+1 to Under Attack rolls", point: 3 },
-    { name: "Melee Weapon", maxfight: 2, notes: "", point: 1 },
+    { name: "USD" },
+    { name: "BGN" },
+    { name: "EUR" },
+    { name: "GBP" },
   ];
 
-  let selectguy = {
-    name: "Test Man",
-    weapon: {
-      name: "Horrible Claws & Teeth",
-      maxfight: 3,
-      notes: "+1 to Under Attack rolls",
-      point: 3,
-    },
+  let selectedCurrency = {
+    name: data[0].currency,
+    price: data[0].price,
   };
 
   function selectchangehandler(options, propname, index) {
-  	selectguy[propname] =options[index];
+    selectedCurrency[propname] = options[index];
+
+    selectedCurrency.name = options[propname].name;
+    
+  }
+
+  
+
+ 
+  function calcCurrency(curr) {
+    if (curr === "EUR") {
+    return "€";
+    } else if (curr === "USD") {
+    return   "$";
+    }else if(curr === "GBP"){
+     return     '£'
+    }else{
+     return 'лв.'
+    }
   }
 </script>
 
@@ -51,9 +67,13 @@
   <title>{data[0].type_desc}</title>
 </svelte:head>
 
- 
 <h1 class="text-4xl my-4 font-bold">{data[0].offer_title}</h1>
 
+<div class='flex justify-center'>
+<span class='text-neutral-500 mx-2'>{data[0].location_country}</span>/ 
+<span class='text-neutral-500 mx-2'>{data[0].location_city}</span> /
+<span class='text-neutral-500 mx-2'>{data[0].location_hood}</span> 
+</div>
 <div class="grid grid-cols-3  mt-4">
   <div class="col-span-2 ">
     <img
@@ -64,14 +84,25 @@
   </div>
   <div class="bg-white pt-3 pl-3">
     <div class=" flex flex-row">
-      <div class="font-semibold">Цена:</div>
- 
-  <select on:change={(e) => selectchangehandler(options, 'weapon', e.target.value)}>
-  {#each options as option, index}
-		 
-    <option value="{index}" selected={option.name === selectguy.weapon.name}>{option.name}</option>
-  {/each}
-</select>
+      <div class="font-semibold mr-2">Цена:</div>
+
+      <select
+        class="px-1 border-solid border-2 border-gray-600 rounded-md   text-sm"
+        on:change={(e) => selectchangehandler(options, e.target.value)}
+      >
+        {#each options as option, index}
+          <option
+            class="leading-none text-left"
+            value={index}
+            selected={option.name === selectedCurrency.name}
+            >{option.name}</option
+          >
+        {/each}
+      </select>
+    </div>
+    <div>
+      {selectedCurrency.name}
+      {calcCurrency(selectedCurrency.name)}
     </div>
   </div>
 </div>
@@ -83,11 +114,9 @@
   @keyframes fadeInOpacity {
     0% {
       opacity: 0;
-   
     }
     100% {
       opacity: 1;
-     
     }
   }
 </style>
