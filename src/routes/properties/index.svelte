@@ -1,7 +1,8 @@
 <script context="module">
   import supabase from "$lib/db";
 
-  export async function load({ page }) {
+  export async function load({ url }) {
+     
     const { data, error } = await supabase.from("properties").select();
 
     const loadedProperty = data.map((data, index) => {
@@ -32,6 +33,7 @@
 	<title>Оферти</title>
 </svelte:head>
 <script>
+
  import CardProperties from '../../Components/cardProperties.svelte';
   export let data;
    

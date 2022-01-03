@@ -1,8 +1,9 @@
 <script context="module">
   import supabase from "$lib/db";
 
-  export async function load({ page }) {
-    const id = page.params.id;
+  export async function load({ params }) {
+    const id =  params.id;
+   
     const { data, error } = await supabase
       .from("properties")
       .select()
