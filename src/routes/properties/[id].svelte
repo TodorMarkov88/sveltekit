@@ -22,12 +22,13 @@
         location_country: data.location_country,
         location_city: data.location_city,
         location_hood: data.location_hood,
+    
       };
     });
 
     if (error) throw new Error(error.message);
 
-    return { props: { data: loadedProperty } };
+    return { props: { data: loadedProperty },  };
   }
 </script>
 

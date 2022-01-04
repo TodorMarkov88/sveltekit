@@ -15,6 +15,7 @@ export async function api(request, resource, data) {
 	// user must have a cookie set
 	if (!request.locals.userid) {
 		return { status: 401 };
+
 	}
 
 	const res = await fetch(`${base}/${resource}`, {
@@ -40,6 +41,7 @@ export async function api(request, resource, data) {
 
 	return {
 		status: res.status,
+ 
 		body: await res.json()
 	};
 }
