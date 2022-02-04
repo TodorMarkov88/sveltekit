@@ -1,0 +1,6 @@
+{
+  "presets": [
+    ["@babel/preset-env", { "modules": "auto" }]
+  ],
+    "plugins": ["babel-plugin-transform-vite-meta-env","@babel/plugin-transform-runtime"]
+}

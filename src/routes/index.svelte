@@ -4,6 +4,8 @@
 
 <script>
 	import Counter from '$lib/Counter.svelte';
+	import CounterTest from '$lib/CounterTest.svelte';
+	 
 </script>
 
 <svelte:head>
@@ -11,6 +13,7 @@
 </svelte:head>
 
 <section>
+ <CounterTest/>
 	<h1>
 		<div class="welcome">
 			<picture>
