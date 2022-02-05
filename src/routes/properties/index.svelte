@@ -34,28 +34,27 @@
 </svelte:head>
 <script>
 
- import CardProperties from '../../Components/cardProperties.svelte';
+   import CardProperties from '../../Components/cardProperties.svelte';
+ 
+
+ 
   export let data;
    
 </script>
 
 <div class="grid grid-cols-3 gap-8 pt-10">
+ 
 {#each data as data_offer}
  
- <CardProperties {data_offer}/>
+  
+ <CardProperties {data_offer}/>  
  
 {/each}
+
+ 
 </div>
 <style>
-  .fade-in {
-    animation: fadeInOpacity forwards 0.45s cubic-bezier(0.45, 0, 0.55, 1);
-  }
-  @keyframes fadeInOpacity {
-    0% {
-      opacity: 0;
-    }
-    100% {
-      opacity: 1;
-    }
-  }
+ 
+  
+ 
 </style>
