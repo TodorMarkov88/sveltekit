@@ -8,7 +8,7 @@ const config = {
 		adapter: adapter(),
 		vite: {
 			define: {
-			  'process.env': process.env,
+			  '.env': process.env,
 			},
 		  },
 		// hydrate the <div id="svelte"> element in src/app.html
