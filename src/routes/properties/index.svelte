@@ -38,11 +38,7 @@
 export let data;
     import CardProperties from '../../Components/cardProperties.svelte';
  
-
- 
-  // 
-  //    if(data)
-  // SwiperCore.use([Lazy ,Navigation]);
+  
 </script>
 
 <div class="grid grid-cols-3 gap-8 pt-10">
@@ -62,6 +58,6 @@ export let data;
  
 </style>
 
-<script>
+ 
 
  
