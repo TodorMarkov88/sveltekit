@@ -32,14 +32,17 @@
 <svelte:head>
 	<title>Оферти</title>
 </svelte:head>
+
+
 <script>
-
-   import CardProperties from '../../Components/cardProperties.svelte';
+export let data;
+    import CardProperties from '../../Components/cardProperties.svelte';
  
 
  
-  export let data;
-   
+  // 
+  //    if(data)
+  // SwiperCore.use([Lazy ,Navigation]);
 </script>
 
 <div class="grid grid-cols-3 gap-8 pt-10">
