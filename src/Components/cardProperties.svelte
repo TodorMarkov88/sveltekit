@@ -8,13 +8,13 @@ export let data_offer
 
  
 
-<a  href={`/properties/${data_offer.id}`} class="hover:no-underline overflow-hidden 	list-none flex flex-col h-full   bg-gray-200 text-gray-900 text-center rounded-md shadow-sm hover:shadow-md   items-center">
+<a  href={`/properties/${data_offer}`} class="hover:no-underline overflow-hidden 	list-none flex flex-col h-full   bg-gray-200 text-gray-900 text-center rounded-md shadow-sm hover:shadow-md   items-center">
 
 <div class='overflow-hidden w-full  h-48'>
 <img src={data_offer.image} alt={data_offer.type_desc}  class=" w-full object-cover    h-48">
 </div>
 <div class='content-wrapper m-4 flex  flex-col justify-between h-auto w-full'>
- <h2 class='uppercase font-bold'> {data_offer.id}. {data_offer.type_desc}  </h2>
+ <h2 class='uppercase font-bold'> {data_offer}. {data_offer.type_desc}  </h2>
 
 <div class="flex justify-center text-base">
 
