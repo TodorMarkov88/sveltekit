@@ -13,7 +13,7 @@
 </svelte:head>
 
 <section>
- <CounterTest/>
+ 
 	<h1>
 		<div class="welcome">
 			<picture>
