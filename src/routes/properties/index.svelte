@@ -2,13 +2,14 @@
   import supabase from "$lib/db";
 
   export async function load({ url }) {
-     
     const { data, error } = await supabase.from("properties").select();
 
     const loadedProperty = data.map((data, index) => {
       return {
         type_desc: data.type_desc,
-        image: `https://nphykmdyafqximjeemqm.supabase.in/storage/v1/object/public/images/${index + 1}.jpeg`,
+        image: `https://nphykmdyafqximjeemqm.supabase.in/storage/v1/object/public/images/${
+          index + 1
+        }.jpeg`,
         offer_title: data.offer_title,
         currency: data.currency,
         id: index + 1,
@@ -29,35 +30,17 @@
   }
 </script>
 
-<svelte:head>
-	<title>Оферти</title>
-</svelte:head>
-
-
 <script>
-export let data;
-    import CardProperties from '../../Components/cardProperties.svelte';
- 
-  
+  export let data;
+  import CardProperties from "../../Components/cardProperties.svelte";
 </script>
 
+<svelte:head>
+  <title>Оферти</title>
+</svelte:head>
+
 <div class="grid grid-cols-3 gap-8 pt-10">
- 
-{#each data as data_offer}
- 
-  
- <CardProperties {data_offer}/>  
- 
-{/each}
-
- 
+  {#each data as data_offer}
+    <CardProperties {data_offer} />
+  {/each}
 </div>
-<style>
- 
-  
- 
-</style>
-
- 
-
- 
