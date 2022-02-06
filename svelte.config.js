@@ -8,12 +8,12 @@ const config = {
 		adapter: vercel(),
 	 
 		// hydrate the <div id="svelte"> element in src/app.html
-		target: '#svelte',
+		  target: '#svelte',
 		vite: {
-			ssr: { 
-				noExternal: Object.keys(pkg.dependencies || {}) 
-			}
-        }
+            define: {
+                'process.env': process.env,
+            },
+        },
 	},
 	transform: {
 		"^.+\\.svelte$": ["svelte-jester", { "preprocess": true }]
