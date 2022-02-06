@@ -2,11 +2,10 @@
   import supabase from "$lib/db";
 
   export async function load({ url }) {
-    const { data, error } = await supabase.from("properties").select();
+    const { data, error } = await supabase.from("properties").select('id');
 
     const loadedimgs = data.map((data, index) => {
       return {
-        type_desc: data.type_desc,
         image: `https://nphykmdyafqximjeemqm.supabase.in/storage/v1/object/public/images/${
           index + 1
         }.jpeg`,
