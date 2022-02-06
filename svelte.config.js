@@ -8,7 +8,12 @@ const config = {
 		adapter: vercel(),
 	 
 		// hydrate the <div id="svelte"> element in src/app.html
-		target: '#svelte'
+		target: '#svelte',
+		vite: {
+            ssr: {
+                noExternal: dev ? [] : ['@supabase/supabase-js']
+            },
+        }
 	},
 	transform: {
 		"^.+\\.svelte$": ["svelte-jester", { "preprocess": true }]
