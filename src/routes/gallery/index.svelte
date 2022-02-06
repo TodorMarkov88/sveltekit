@@ -52,11 +52,7 @@
 </Swiper>
 
 <style>
-  .swiper-slide {
-    text-align: center;
-    font-size: 18px;
-    background: #000;
-  }
+ 
 
   .swiper-lazy {
     width: 100%;
