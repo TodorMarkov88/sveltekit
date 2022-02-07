@@ -33,7 +33,7 @@
   export let data;
   if (data) SwiperCore.use([Lazy, Navigation]);
 </script>
-
+<div>Галерия</div>
 <Swiper
   style="--swiper-navigation-color: #fff;--swiper-pagination-color: #fff;   height: 30rem;width:100%"
   lazy={true}
