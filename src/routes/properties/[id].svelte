@@ -3,7 +3,7 @@
 
   export async function load({ params }) {
     const id =  params.id;
-   
+   console.log(params)
     const { data, error } = await supabase
       .from("properties")
       .select()
@@ -30,6 +30,7 @@
 
     return { props: { data: loadedProperty },  };
   }
+  	export const prerender = true;
 </script>
 
 <script>

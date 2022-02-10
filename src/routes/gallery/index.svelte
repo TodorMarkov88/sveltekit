@@ -19,6 +19,8 @@
 
     return { props: { data: loadedimgs } };
   }
+
+  	export const prerender = true;
 </script>
 
 <script>

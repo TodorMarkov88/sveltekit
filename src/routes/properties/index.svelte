@@ -28,6 +28,7 @@
 
     return { props: { data: loadedProperty } };
   }
+  	export const prerender = true;
 </script>
 
 <script>

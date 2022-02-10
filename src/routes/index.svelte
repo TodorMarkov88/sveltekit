@@ -5,7 +5,7 @@
 <script>
 	import Counter from '$lib/Counter.svelte';
 	import CounterTest from '$lib/CounterTest.svelte';
-	 
+ 
 </script>
 
 <svelte:head>
