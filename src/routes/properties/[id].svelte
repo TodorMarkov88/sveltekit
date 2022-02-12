@@ -2,8 +2,8 @@
   import supabase from "$lib/db";
 
   export async function load({ params }) {
-    const id =  params.id;
-   console.log(params)
+    const id = params.id;
+    console.log(params);
     const { data, error } = await supabase
       .from("properties")
       .select()
@@ -22,19 +22,43 @@
         location_country: data.location_country,
         location_city: data.location_city,
         location_hood: data.location_hood,
-    
       };
     });
 
     if (error) throw new Error(error.message);
 
-    return { props: { data: loadedProperty },  };
+    return { props: { data: loadedProperty } };
   }
-  	export const prerender = true;
+  export const prerender = true;
 </script>
 
 <script>
   export let data;
+
+ 
+  import { browser } from "$app/env";
+   import { onMount } from 'svelte';
+  import { Image } from "@rodneylab/sveltekit-components";
+  const meta = data[0].image + "?w=768&metadata";
+  const srcsetJpeg = data[0].image + "?w=1536;1280;768;640&jpeg&srcset";
+  const srcsetWebp = data[0].image + "?w=1536;1280;768;640&webp&srcset";
+
+  const { width, height, src } = meta;
+  const sources = [
+    { srcset: srcsetWebp, type: "image/webp" },
+    { srcset: srcsetJpeg, type: "image/jpeg" },
+  ];
+  const sizes = "(max-width: 672px) calc(100vw - 32px), 672px";
+
+//  onMount(() => {
+//     if (browser) {
+//       document.lazyloadInstance.update();
+//     }
+//   });
+
+
+ export let imageData;
+
 
   const options = [
     { name: "USD" },
@@ -123,6 +147,10 @@
 <svelte:head>
   <title>{data[0].type_desc}</title>
 </svelte:head>
+
+
+<Image  {width}   {height} {src} {sources}  {sizes} style='visibility:visible;' />
+
 
 <h1 class="text-4xl my-4 font-bold">{data[0].offer_title}</h1>
 
