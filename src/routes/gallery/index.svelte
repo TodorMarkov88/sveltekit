@@ -33,7 +33,7 @@
   import "swiper/css/lazy";
   import "swiper/css/pagination";
   import "swiper/css/navigation";
-console.log(prerender)
+ 
   export let data;
   if (data) SwiperCore.use([Lazy, Navigation]);
 </script>

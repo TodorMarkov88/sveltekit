@@ -1,5 +1,5 @@
   import vercel from '@sveltejs/adapter-vercel'
-  import { imagetools } from 'vite-imagetools';
+ 
 //   import adapter from '@sveltejs/adapter-auto'
 
 /** @type {import('@sveltejs/kit').Config} */
@@ -11,7 +11,7 @@ const config = {
 			define: {
 			  'process.env': process.env,
 			},
-			plugins: [imagetools({ force: true })],
+		 
 		  },
 		// hydrate the <div id="svelte"> element in src/app.html
 		//    target: '#svelte',
